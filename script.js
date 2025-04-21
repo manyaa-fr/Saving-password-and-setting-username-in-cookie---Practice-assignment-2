@@ -91,4 +91,16 @@ pinInput.addEventListener('input', (e) => {
 // attach the test function to the button
 document.getElementById('check').addEventListener('click', test);
 
+(async () => {
+  const targetHash = localStorage.getItem('sha256');
+
+  for (let i = 100; i <= 999; i++) {
+    const hash = await sha256(i.toString());
+    if (hash === targetHash) {
+      console.log(✅ Found the number: ${i});
+      break;
+    }
+  }
+})();
+
 main();
